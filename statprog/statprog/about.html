@@ -1,0 +1,57 @@
+
+{% extends "header.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container" style="max-width: 1500px; min-height: 100%">
+    <div class="col-md-10">
+        <div class="vid-and-nav">
+            <div class="vid-display">
+                <div class="vid-heading">
+                    <p>{{video.title}}</p>
+                </div>
+                <div class="vid-body">
+                    <iframe class="video-content" width='784' height='441' src={{video.yt_reference}} frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+ 
+            <!--<div class="nav-buttons">
+                <nav aria-label="...">
+                  <ul class="pager">
+                    <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
+                  </ul>
+                </nav>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="next-heading">
+            <h3>More In This Series:</h3>
+        </div>
+
+        <!-- Should just display all videos - and have 'current vid in text instead of the thumbnail -->
+        <!-- Needs display dynamically according to how many videos in the series -->
+
+        {% for nav_vid in video_list %}
+            {% if nav_vid.lesson_num != video.lesson_num %}
+                <div class="thumbnails-container">
+                    <div class="thumbnail">
+                        <div class="thumbnail-title">
+                            <p>{{nav_vid.title}}</p>
+                        </div>
+                        <div class="thumbnail-holder">
+                            <a href='{{nav_vid.site_url}}' class="thumbnail-pic"><img src="{% static 'statics/images/thumbnails/Progressing_From_Excel_To_R/Series1_Vlookups.jpg' %}" align=""></img>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+         </div>
+    </div>
+</div>
+
+{% endblock %} 
