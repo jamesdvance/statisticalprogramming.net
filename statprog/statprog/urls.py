@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^', include('statics.urls')), #the url function matches the regular expression for the url to a function
     url(r'^about/', TemplateView.as_view(template_name='about.html')),
     url(r'^videos/', include('vidseries.urls')),
-    #url(u'^Series/(?P<series_name>)/<?P<lesson_num>[0-9]{2}))/$', include(statprog.vidseries.urls)), # need some kind of function
+    url(r'^blogs/', include('blog.urls'))
 ]

@@ -1,0 +1,45 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+{% load static %}
+
+
+<div class="container" style="max-width: 1500px; min-height: 100%">
+    <div class="col-md-10">
+        <div class="blog-and-nav">
+            <div class="blog-display">
+                <div class="blog-heading">
+                    <p>{{blog.title}}</p>
+                </div>
+                <div class="blog-body">
+                	<p>{{blog.body|safe}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="next-heading">
+            <h3>More In This Series:</h3>
+        </div>
+
+        {% for nav_blog in blog_list %}
+            {% if nav_blog.post_num != blog.post_num %}
+                <div class="blog-thumbnails-container">
+                    <div class="blog-thumbnail">
+                        <div class="blog-thumbnail-title">
+                            <p>{{blog.title}}</p>
+                        </div>
+                        <div class="blog-thumbnail-holder">
+                            <a href='{{blog.site_url}}' class="blog-thumbnail-pic"><img src="{% static blog.thumbnail_reference %}" align=""></img>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+         </div>
+    </div>
+</div>
+
+{% endblock %}
